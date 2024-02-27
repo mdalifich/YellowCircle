@@ -1,4 +1,5 @@
 import pygame
+from random import randint
 
 if __name__ == '__main__':
     pygame.init()
@@ -25,7 +26,7 @@ if __name__ == '__main__':
                     screen.fill((0, 0, 250))
                     size = 0
         if flag:
-            pygame.draw.circle(screen, (255, 0, 0), (x, y), size)
+            pygame.draw.circle(screen, (randint(0, 255), randint(0, 255), randint(0, 255)), (x, y), size)
             size += pps * clock.tick() / 1000
         pygame.display.flip()
     pygame.quit()

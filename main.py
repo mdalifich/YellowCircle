@@ -1,32 +1,20 @@
 import pygame
 from random import randint
+import Cube
+from Cube import *
 
 if __name__ == '__main__':
     pygame.init()
-    pygame.display.set_caption('Круг')
-    size = width, height = 2000, 2000
+    pygame.display.set_caption('Куб')
+    size = width, height = 150, 150
     screen = pygame.display.set_mode(size)
-
+    cube = Cubic(0, 0, screen)
     running = True
-    x, y = 0, 0
-    pps = 10# Pixels per Seconds. В учебнике v. 
-    flag = False
-    size = 0
-    clock = pygame.time.Clock()
-    screen.fill((0, 0, 250))
     while running:
-
+        screen.fill((0, 0, 250))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if event.button == 1:
-                    x, y = event.pos
-                    flag = True
-                    screen.fill((0, 0, 250))
-                    size = 0
-        if flag:
-            pygame.draw.circle(screen, (randint(0, 255), randint(0, 255), randint(0, 255)), (x, y), size)
-            size += pps * clock.tick() / 1000
+        cube.draw()
         pygame.display.flip()
     pygame.quit()
